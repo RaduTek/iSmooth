@@ -1,0 +1,93 @@
+/* 
+ * iSmooth Index CSS
+ */
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body,
+.page {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    background-color: #000;
+    overflow: hidden;
+}
+
+html,
+body,
+button,
+input,
+select {
+    font: 14px/1.25 sans-serif;
+}
+
+.view,
+.content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+}
+
+.content {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background-color: #fff;
+    color: #222;
+}
+
+/* Fix for scrolling items inside page container */
+.content > * {
+    -webkit-transform: translateZ(0px);
+    transform: translateZ(0px);
+}
+
+.bg-primary {
+    background: -webkit-linear-gradient(top, #e2e5ea, #d0d2d8);
+}
+
+.bg-secondary {
+    background: -webkit-linear-gradient(top, #e7e9ec, #c0c4cb);
+}
+
+.bg-pinstripe {
+    background: #c7ced5
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAIAAACdaSOZAAAAFElEQVQIHWM4euYKErp0+tINIAIAuHQQ4rDrv5YAAAAASUVORK5CYII=");
+}
+
+/* Two Column View ========================================================= */
+
+.two-column-view .two-column-left {
+    left: 0;
+    right: 50%;
+}
+.two-column-view .two-column-right {
+    left: 50%;
+    right: 0;
+}
+
+.two-column-view.right-large .two-column-left {
+    left: 0;
+    right: 67%;
+}
+.two-column-view.right-large .two-column-right {
+    left: 33.25%;
+    right: 0;
+}
+
+.two-column-view.left-large .two-column-left {
+    left: 0;
+    right: 33.25%;
+}
+.two-column-view.left-large .two-column-right {
+    left: 67%;
+    right: 0;
+}

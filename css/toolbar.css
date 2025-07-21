@@ -1,0 +1,184 @@
+/* 
+ * iSmooth Title Bar CSS
+ */
+
+.toolbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: 44px;
+    padding: 7px 3px;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    border-radius: 5px;
+    background: -webkit-linear-gradient(top, #ffffff, #a8acb9);
+    border: 1px solid #7a8091;
+}
+
+.toolbar.top {
+    top: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-width: 0 0 1px 0;
+}
+
+.toolbar.bottom {
+    bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-width: 1px 0 0 0;
+}
+
+.toolbar > * {
+    z-index: 11;
+}
+
+.toolbar.top ~ .content {
+    top: 44px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.toolbar.bottom ~ .content {
+    bottom: 44px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.toolbar .toolbar-label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    color: #717880;
+}
+
+.toolbar .toolbar-center {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.toolbar button {
+    position: relative;
+    border: 1px solid #616469;
+    border-top-color: #4c4e50;
+    border-radius: 5px;
+    background: -webkit-linear-gradient(top, #b1b5bb, #6b737e);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 1px 0 rgba(0, 0, 0, 0.15);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    color: #fff;
+    font-size: 13px;
+    box-sizing: border-box;
+    padding: 5px 9px;
+    height: 29px;
+    margin: 0 4px;
+    min-width: 40px;
+}
+
+.toolbar button.left {
+    float: left;
+}
+.toolbar button.right {
+    float: right;
+}
+
+/* .toolbar button.active {
+    color: red;
+} */
+
+.toolbar button.chevron-left {
+    border-bottom-left-radius: 10px 15px;
+    border-top-left-radius: 10px 15px;
+    border-left-width: 0;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+.toolbar button.chevron-left::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    width: 27px;
+    height: 27px;
+    left: -4px;
+    border-radius: 30px 100px 2px 40px / 2px 40px 30px 100px;
+    background-image: -webkit-linear-gradient(45deg, #6b737e, #b1b5bb);
+    -webkit-mask-image: -webkit-linear-gradient(-45deg, #000 26%, transparent 40%);
+    box-shadow: inset 1px 0 #616469, inset 0 1px #616469;
+    border-left: 1.5px solid rgba(255, 255, 255, 0.6);
+    -webkit-transform: rotate(-45deg) skew(-10deg, -10deg);
+    transform: rotate(-45deg) skew(-10deg, -10deg);
+}
+
+.toolbar button.chevron-right {
+    border-bottom-right-radius: 10px 15px;
+    border-top-right-radius: 10px 15px;
+    border-right-width: 0;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+.toolbar button.chevron-right::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    width: 27px;
+    height: 26px;
+    right: -4px;
+    border-radius: 2px 40px 30px 100px / 30px 100px 2px 40px;
+    background-image: -webkit-linear-gradient(45deg, #6b737e, #b1b5bb);
+    -webkit-mask-image: -webkit-linear-gradient(135deg, #000 26%, transparent 40%);
+    box-shadow: inset -1px 0 #616469, inset 0 -1px #616469;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.6);
+    -webkit-transform: rotate(-45deg) skew(-10deg, -10deg);
+    transform: rotate(-45deg) skew(-10deg, -10deg);
+}
+
+.toolbar .button-group {
+    display: table;
+    overflow: hidden;
+    margin: 0 auto;
+    height: 30px;
+}
+
+.toolbar .button-group button {
+    float: left;
+    margin: 0;
+    margin-left: -1px;
+    border-radius: 0;
+}
+
+.toolbar .button-group button:not(.active) {
+    background: transparent;
+    border: 1px solid #82858a;
+    border-top-color: #626466;
+    text-shadow: none;
+    color: #555;
+}
+
+.toolbar .button-group button:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-left: 0;
+}
+
+.toolbar .button-group button:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/* Toolbar Blue Theme ====================================================== */
+
+.toolbar.blue {
+    background: -webkit-linear-gradient(top, #c1d1e4 0%, #a1b2c9 33%, #758cab 67%, #557094 100%);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), inset 0px 0.5px 0px rgba(255, 255, 255, 0.6),
+        inset 0px 1px 0px rgba(255, 255, 255, 0.3), inset 0px -1px 0px rgba(0, 0, 0, 0.1);
+}

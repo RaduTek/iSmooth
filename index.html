@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content="iSmooth" />
+
+        <link rel="stylesheet" href="/style.css" />
+        <title>iSmooth</title>
+
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="/js/index.js"></script>
+    </head>
+    <body>
+        <div class="page page-current two-column-view right-large">
+            <div class="view two-column-left">
+                <header class="toolbar top">
+                    <div class="toolbar-center">
+                        <div class="button-group">
+                            <button class="active">Button 1</button>
+                            <button>Button 2</button>
+                            <button>Button 3</button>
+                        </div>
+                    </div>
+                </header>
+                <div class="content bg-secondary">
+                    <div class="list list-secondary">
+                        <button class="list-item">
+                            <i class="icon-primary" style="background-image: url(/icons/29/Calendar.png)"></i>
+                            <span class="text-primary">List Item</span>
+                        </button>
+                        <button class="list-item">
+                            <span class="text-primary">List Item</span>
+                        </button>
+                        <button class="list-item">
+                            <span class="text-primary">List Item</span>
+                        </button>
+                        <button class="list-item">
+                            <span class="text-primary">List Item</span>
+                        </button>
+                        <button class="list-item">
+                            <span class="text-primary">List Item</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view two-column-right">
+                <header class="toolbar top">
+                    <div class="toolbar-label">iSmooth</div>
+                    <button class="left chevron-left">Back</button>
+                    <button class="left" onclick="location.reload()">Refresh</button>
+                    <button class="left">.</button>
+                    <button class="right chevron-right" onclick="alert('other click')">Other</button>
+                </header>
+                <nav class="tab-bar">
+                    <button class="active">
+                        <i class="icon"></i>
+                        <span>Tab Button</span>
+                    </button>
+                    <button>
+                        <i class="icon"></i>
+                        <span>Tab Button</span>
+                    </button>
+                    <button>
+                        <i class="icon"></i>
+                        <span>Tab Button</span>
+                    </button>
+                </nav>
+                <div class="content bg-primary">
+                    <div class="list list-primary list-large">
+                        <div class="list-group">
+                            <div class="list-item">
+                                <span class="text-primary">Label</span>
+                            </div>
+                            <button class="list-item">
+                                <i class="icon-list-chevron"></i>
+                                <span class="text-primary">Label</span>
+                            </button>
+                            <button class="list-item">
+                                <i class="icon-accent icon-secondary"></i>
+                                <span class="text-primary">Label</span>
+                            </button>
+                            <button class="list-item">
+                                <i class="icon-primary" style="background-image: url(/icons/29/Calendar.png)"></i>
+                                <i class="icon-accent icon-secondary"></i>
+                                <span class="text-primary">Label</span>
+                            </button>
+                        </div>
+                        <div class="list-title">List Group Title</div>
+                        <div class="list-group">
+                            <div class="list-item">
+                                <span class="text-primary">Label</span>
+                            </div>
+                            <button class="list-item">
+                                <i class="icon-list-chevron"></i>
+                                <span class="text-primary">Label</span>
+                            </button>
+                            <button class="list-item">
+                                <i class="icon-accent icon-secondary"></i>
+                                <span class="text-primary">Label</span>
+                            </button>
+                            <button class="list-item">
+                                <i class="icon-primary" style="background-image: url(/icons/29/Calendar.png)"></i>
+                                <i class="icon-accent icon-secondary"></i>
+                                <span class="text-primary">Label</span>
+                            </button>
+                        </div>
+                        <div class="list-group">
+                            <div class="list-item">
+                                <span class="text-primary">Label</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
