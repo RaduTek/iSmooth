@@ -83,18 +83,18 @@ select {
 
 .two-column-view.right-large .two-column-left {
     left: 0;
-    right: 67%;
+    right: 68%;
 }
 .two-column-view.right-large .two-column-right {
-    left: 33.25%;
+    left: 32.25%;
     right: 0;
 }
 
 .two-column-view.left-large .two-column-left {
     left: 0;
-    right: 33.25%;
+    right: 32.25%;
 }
 .two-column-view.left-large .two-column-right {
-    left: 67%;
+    left: 68%;
     right: 0;
 }
