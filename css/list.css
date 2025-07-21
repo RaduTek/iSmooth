@@ -8,6 +8,7 @@
     margin: 0;
     list-style: none;
     list-style-type: none;
+    -webkit-user-select: none;
 }
 
 /* Reset style */
@@ -24,6 +25,17 @@
 
 /* General Styles ========================================================== */
 
+.list .list-item {
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-decoration: none;
+}
+.list .list-item.active,
+.list .list-item.selected {
+    background: -webkit-linear-gradient(top, #058cf5, #015de6);
+}
+
 .list .list-item .text-primary {
     display: block;
     padding: 12px;
@@ -31,6 +43,11 @@
     font-weight: bold;
     color: #000;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.list .list-item.active .text-primary,
+.list .list-item.selected .text-primary {
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
 
 .list .list-item .text-secondary {
