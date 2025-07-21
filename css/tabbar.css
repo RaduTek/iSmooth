@@ -12,6 +12,7 @@
     padding: 2px;
     text-align: center;
     box-sizing: border-box;
+    overflow: hidden;
     -webkit-user-select: none;
     background-color: #222;
     border-bottom-left-radius: 5px;
@@ -22,7 +23,8 @@
     box-shadow: inset 0 1px 0 #424242;
 }
 
-.tab-bar ~ .content {
+.tab-bar ~ .content,
+.tab-bar ~ .view .content {
     bottom: 49px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;

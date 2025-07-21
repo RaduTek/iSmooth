@@ -10,6 +10,7 @@
     height: 44px;
     padding: 7px 3px;
     box-sizing: border-box;
+    overflow: hidden;
     -webkit-user-select: none;
     border-radius: 5px;
     background: -webkit-linear-gradient(top, #ffffff, #a8acb9);
@@ -34,13 +35,15 @@
     z-index: 11;
 }
 
-.toolbar.top ~ .content {
+.toolbar.top ~ .content,
+.toolbar.top ~ .view .content {
     top: 44px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-.toolbar.bottom ~ .content {
+.toolbar.bottom ~ .content,
+.toolbar.bottom ~ .view .content {
     bottom: 44px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -156,7 +159,7 @@
     border-radius: 0;
 }
 
-.toolbar .button-group button:not(.active) {
+.toolbar .button-group button:not(.selected) {
     background: transparent;
     border: 1px solid #82858a;
     border-top-color: #626466;
