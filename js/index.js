@@ -3,6 +3,36 @@ document.createElement("tabbar");
 document.createElement("tb-label");
 document.createElement("page");
 
+function pageInit(page) {
+    $(page)
+        .find("button")
+        .on("touchstart mousedown", function () {
+            $(this).addClass("active");
+        });
+    $(page)
+        .find("button")
+        .on("touchend touchcancel mouseup", function () {
+            $(this).removeClass("active");
+        });
+}
+
+$(function () {
+    $(".page").each(function () {
+        pageInit(this);
+    });
+});
+
+// window.addEventListener(
+//     "orientationchange",
+//     function () {
+//         document.body.style.paddingRight = "1px";
+//         setTimeout(function () {
+//             document.body.style.paddingRight = "";
+//         }, 50);
+//     },
+//     true
+// );
+
 // $(function () {
 //     $("button").on("touchstart mousedown", function () {
 //         $(this).addClass("active");
