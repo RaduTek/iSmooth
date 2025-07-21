@@ -29,3 +29,15 @@ i {
     height: 29px;
     background-image: url("/icons/29/success.png");
 }
+
+.icon-tab-search {
+    -webkit-mask-image: url(/icons/tabs/search.png);
+}
+
+.icon-tab-book {
+    -webkit-mask-image: url(/icons/tabs/book.png);
+}
+
+.icon-tab-clock {
+    -webkit-mask-image: url(/icons/tabs/clock.png);
+}
