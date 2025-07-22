@@ -95,9 +95,9 @@
     float: right;
 }
 
-/* .toolbar button.active {
-    color: red;
-} */
+.toolbar button.active {
+    background: -webkit-linear-gradient(top, #989da3, #535a64);
+}
 
 .toolbar button.chevron-left {
     border-bottom-left-radius: 10px 15px;
