@@ -90,7 +90,10 @@ function showDialog(props) {
     var dialog = $('<div class="dialog-box"></div>');
     dialogElement = dialog;
 
+    var dismissStarted = false;
     function dismiss(value) {
+        if (dismissStarted) return;
+        dismissStarted = true;
         dialogElement = null;
 
         if (props.callback) {
