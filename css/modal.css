@@ -27,7 +27,7 @@
 }
 
 .modal-backdrop.open-anim {
-    -webkit-animation: modal-backdrop-open 0.4s 0.1s ease-out forwards;
+    -webkit-animation: modal-backdrop-open 0.3s 0.05s ease-in-out forwards;
 }
 @-webkit-keyframes modal-backdrop-open {
     from {
@@ -39,7 +39,7 @@
 }
 
 .modal-backdrop.close-anim {
-    -webkit-animation: modal-backdrop-close 0.4s 0.01s ease-out forwards;
+    -webkit-animation: modal-backdrop-close 0.3s 0.01s ease-in-out forwards;
 }
 @-webkit-keyframes modal-backdrop-close {
     from {
