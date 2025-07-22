@@ -1,19 +1,43 @@
-document.createElement("titlebar");
-document.createElement("tabbar");
-document.createElement("tb-label");
-document.createElement("page");
+function getiOSVersion() {
+    var agent = navigator.userAgent;
+    if (!/iP(hone|od|ad)/.test(agent)) return null;
+
+    var match = agent.match(/OS (\d+)_(\d+)_?(\d+)?/);
+    if (!match) return null;
+
+    var major = parseInt(match[1], 10);
+    var minor = parseInt(match[2], 10);
+    var patch = match[3] ? parseInt(match[3], 10) : 0;
+
+    return {
+        major: major,
+        minor: minor,
+        patch: patch
+    };
+}
+
+iOSVersion = getiOSVersion();
 
 function pageInit(page) {
-    $(page)
-        .find("button")
-        .on("touchstart mousedown", function () {
-            $(this).addClass("active");
+    var buttons = $(page).find("button");
+
+    buttons.each(function () {
+        var btn = $(this);
+
+        if (btn.data("active-event")) {
+            return;
+        }
+
+        btn.on("touchstart mousedown", function () {
+            btn.addClass("active");
         });
-    $(page)
-        .find("button")
-        .on("touchend touchcancel mouseup", function () {
-            $(this).removeClass("active");
+
+        btn.on("touchend touchcancel mouseup mouseleave", function () {
+            btn.removeClass("active");
         });
+
+        $(this).data("active-event", true);
+    });
 }
 
 $(function () {
@@ -22,51 +46,57 @@ $(function () {
     });
 });
 
-// window.addEventListener(
-//     "orientationchange",
-//     function () {
-//         document.body.style.paddingRight = "1px";
-//         setTimeout(function () {
-//             document.body.style.paddingRight = "";
-//         }, 50);
-//     },
-//     true
-// );
+var loadingOverlayInstance = null;
 
-// $(function () {
-//     $("button").on("touchstart mousedown", function () {
-//         $(this).addClass("active");
-//         $("#test").text("Button pressed: " + $(this).text());
-//     });
-//     $("button").on("touchend touchcancel mouseup", function () {
-//         $(this).removeClass("active");
-//         $("#test").text("Button released: " + $(this).text());
-//     });
+function showLoading(message) {
+    message = message || "Loading";
 
-//     $("#test").text("Ready to test button interactions.");
-// });
+    if (loadingOverlayInstance) {
+        $("#loadingOverlayText").text(message);
+        return;
+    }
 
-// Prevent default touch actions on the document to avoid unwanted scrolling
-// $(document).on("touchmove", function (e) {
-//     if ($(e.target).closest(".content").length === 0) {
-//         e.preventDefault(); // Prevent scrolling if not inside .content
-//     }
-// });
+    loadingOverlayInstance = $(
+        '<div class="loading-overlay">' +
+            '<div class="loading-box">' +
+            '<div class="spinner"></div>' +
+            '<div id="loadingOverlayText">' +
+            message +
+            "</div></div></div>"
+    );
 
-// $(document).on("touchmove", function (e) {
-//     // var $el = $(e.target).closest(".content");
+    $("body").append(loadingOverlayInstance);
+}
 
-//     // if ($el.length === 0) {
-//     //     // Not inside .content → block scroll
-//     //     e.preventDefault();
-//     // } else {
-//     // Check if element is actually scrollable
-//     var el = $el[0];
-//     var isScrollable = el.scrollHeight > el.clientHeight;
+function hideLoading() {
+    if (!loadingOverlayInstance) return;
+    loadingOverlayInstance.remove();
+    loadingOverlayInstance = null;
+}
 
-//     if (!isScrollable) {
-//         e.preventDefault(); // In .content but it's not scrollable
-//     }
-//     // Else: allow native scrolling
-//     // }
-// });
+function reloadWindow() {
+    showLoading("Reloading Window");
+    setTimeout(function () {
+        location.reload();
+    }, 500);
+}
+
+function animateClass(target, closing, duration) {
+    target = $(target);
+    var className = closing ? "close-anim" : "open-anim";
+
+    if (!closing) {
+        target.removeClass("open open-anim close-anim");
+    }
+
+    target.addClass(className);
+
+    setTimeout(function () {
+        if (!closing) {
+            target.addClass("open");
+        } else {
+            target.removeClass("open");
+        }
+        target.removeClass(className);
+    }, duration);
+}
