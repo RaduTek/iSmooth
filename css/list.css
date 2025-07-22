@@ -28,12 +28,13 @@
 .list .list-item {
     position: relative;
     box-sizing: border-box;
-    cursor: pointer;
     text-decoration: none;
 }
 .list .list-item.active,
-.list .list-item.selected {
+.list .list-item.selected,
+.list input:checked + .list-item {
     background: -webkit-linear-gradient(top, #058cf5, #015de6);
+    box-shadow: none !important;
 }
 
 .list .list-item .text-primary {
@@ -78,6 +79,15 @@
 .list .list-item .icon-list-chevron {
     float: right;
     margin: 13px 8px 13px 0;
+}
+
+.list .list-item.checked::before {
+    content: "";
+    float: right;
+    width: 14px;
+    height: 14px;
+    background-image: url("/icons/list/checkmark.png");
+    margin: 15px 10px 13px 0;
 }
 
 /* Primary List ============================================================ */
