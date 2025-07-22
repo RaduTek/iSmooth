@@ -12,6 +12,10 @@ i {
     background-image: url("/icons/list/chevron.svg");
 }
 
+.icon-list-checked {
+    background-image: url("/icons/list/checkmark.png");
+}
+
 .icon-accent {
     width: 29px;
     height: 29px;
