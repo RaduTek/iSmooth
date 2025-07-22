@@ -16,6 +16,17 @@
 
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script src="/js/index.js"></script>
+        <script src="/js/modal.js"></script>
+        <script src="/js/dialog.js"></script>
+        <script>
+            function myDialog() {
+                showDialog({
+                    buttons: "yesno",
+                    buttonsVertical: true,
+                    text: "Hello, world!"
+                });
+            }
+        </script>
     </head>
     <body>
         <div class="page page-current two-column-view right-large">
@@ -70,7 +81,7 @@
                 <header class="toolbar top">
                     <div class="toolbar-label">iSmooth</div>
                     <button class="left chevron-left">Back</button>
-                    <button class="left" onclick="location.reload()">Refresh</button>
+                    <button class="left" onclick="reloadWindow()">Refresh</button>
                     <button class="left">.</button>
                     <button class="right chevron-right" onclick="alert('other click')">Other</button>
                 </header>
@@ -80,13 +91,17 @@
                             <div class="list-item">
                                 <span class="text-primary">Label</span>
                             </div>
-                            <button class="list-item">
+                            <button class="list-item" onclick="showModal('#modal1')">
                                 <i class="icon-list-chevron"></i>
-                                <span class="text-primary">Label</span>
+                                <span class="text-primary">Open Modal</span>
                             </button>
-                            <button class="list-item">
+                            <button class="list-item" onclick="alert('native alert')">
                                 <i class="icon-accent icon-secondary"></i>
-                                <span class="text-primary">Label</span>
+                                <span class="text-primary" id="test">Open Native Alert</span>
+                            </button>
+                            <button class="list-item" onclick="myDialog()">
+                                <i class="icon-accent icon-secondary"></i>
+                                <span class="text-primary" id="test">Open Alert Dialog</span>
                             </button>
                             <button class="list-item">
                                 <i class="icon-primary" style="background-image: url(/icons/29/Calendar.png)"></i>
@@ -96,9 +111,12 @@
                         </div>
                         <div class="list-title">List Group Title</div>
                         <div class="list-group">
-                            <div class="list-item">
+                            <button class="list-item">
                                 <span class="text-primary">Label</span>
-                            </div>
+                            </button>
+                            <button class="list-item checked">
+                                <span class="text-primary">Label</span>
+                            </button>
                             <button class="list-item">
                                 <i class="icon-list-chevron"></i>
                                 <span class="text-primary">Label</span>
@@ -122,5 +140,45 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal-host" id="mh1">
+            <div class="modal-backdrop"></div>
+            <div class="modal modal-w-medium modal-h-large" id="modal1">
+                <header class="toolbar top">
+                    <button class="right" onclick="hideModal('#modal1')">Close</button>
+                    <div class="toolbar-label">Modal</div>
+                </header>
+                <div class="content bg-primary">
+                    <div class="list list-primary list-medium">
+                        <div class="list-title">List Group Title</div>
+                        <div class="list-group">
+                            <button class="list-item">
+                                <span class="text-primary">Label</span>
+                            </button>
+                            <button class="list-item checked">
+                                <span class="text-primary">Label</span>
+                            </button>
+                            <button class="list-item">
+                                <i class="icon-list-chevron"></i>
+                                <span class="text-primary">Label</span>
+                            </button>
+                            <button class="list-item">
+                                <i class="icon-accent icon-secondary"></i>
+                                <span class="text-primary">Label</span>
+                            </button>
+                            <button class="list-item">
+                                <i class="icon-primary" style="background-image: url(/icons/29/Calendar.png)"></i>
+                                <i class="icon-accent icon-secondary"></i>
+                                <span class="text-primary">Label</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            modalHostInstance = $("#mh1");
+        </script>
     </body>
 </html>
