@@ -9,7 +9,10 @@ function showModalHost() {
     }
 
     modalBackdrop = modalHostInstance.children(".modal-backdrop").first();
-    animateClass(modalBackdrop, false, modalOpenDuration);
+
+    if (!iOSVersion || iOSVersion.major >= 6) animateClass(modalBackdrop, false, modalOpenDuration);
+    else modalBackdrop.addClass("open");
+
     modalHostInstance.addClass("open");
 }
 
@@ -17,7 +20,7 @@ function hideModalHost() {
     if (!modalHostInstance) return;
 
     modalBackdrop = modalHostInstance.children(".modal-backdrop").first();
-    animateClass(modalBackdrop, true, modalOpenDuration);
+    if (!iOSVersion || iOSVersion.major >= 6) animateClass(modalBackdrop, true, modalOpenDuration);
 
     setTimeout(function () {
         modalHostInstance.removeClass("open");
