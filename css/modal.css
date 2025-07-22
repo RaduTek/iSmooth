@@ -1,0 +1,121 @@
+.modal-host {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+}
+.modal-host.open {
+    display: block;
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+}
+
+.modal-backdrop.open {
+    opacity: 1;
+}
+
+.modal-backdrop.open-anim {
+    -webkit-animation: modal-backdrop-open 0.4s 0.1s ease-out forwards;
+}
+@-webkit-keyframes modal-backdrop-open {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-backdrop.close-anim {
+    -webkit-animation: modal-backdrop-close 0.4s 0.01s ease-out forwards;
+}
+@-webkit-keyframes modal-backdrop-close {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.modal {
+    position: absolute;
+    bottom: 100%;
+    z-index: 1001;
+    -webkit-user-select: none;
+    max-width: 300px;
+    width: 80%;
+    height: 80%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
+    display: none;
+    /* opacity: 0; */
+    -webkit-transform: translateZ(0) translateY(125%);
+}
+
+.modal.open {
+    display: block;
+    -webkit-transform: translateZ(0);
+}
+
+.modal.open-anim {
+    display: block;
+    -webkit-animation: modal-open 0.4s 0.1s ease-out forwards;
+}
+
+@-webkit-keyframes modal-open {
+    from {
+        -webkit-transform: translateZ(0) translateY(125%);
+    }
+    to {
+        -webkit-transform: translateZ(0);
+    }
+}
+
+.modal.close-anim {
+    display: block;
+    -webkit-animation: modal-close 0.4s 0.01s ease-out forwards;
+}
+
+@-webkit-keyframes modal-close {
+    from {
+        -webkit-transform: translateZ(0);
+    }
+    to {
+        -webkit-transform: translateZ(0) translateY(125%);
+    }
+}
+
+.modal.modal-w-medium {
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.modal.modal-w-large {
+    min-width: 500px;
+    max-width: 700px;
+}
+
+.modal.modal-h-medium {
+    min-height: 300px;
+    max-height: 600px;
+}
+
+.modal.modal-h-large {
+    min-height: 400px;
+    max-height: 700px;
+}

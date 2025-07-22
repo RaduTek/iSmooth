@@ -1,0 +1,141 @@
+.dialog-host {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1020;
+    display: none;
+    -webkit-user-select: none;
+}
+.dialog-host.open {
+    display: block;
+}
+
+.dialog-backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1020;
+    background-color: rgba(0, 0, 0, 0.3);
+    background: -webkit-radial-gradient(ellipse, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.6));
+    opacity: 0;
+}
+.dialog-backdrop.open {
+    opacity: 1;
+}
+.dialog-backdrop.open-anim {
+    -webkit-animation: opacity-in 0.2s 0.05s ease-out forwards;
+}
+.dialog-backdrop.close-anim {
+    -webkit-animation: opacity-out 0.2s ease-out forwards;
+}
+
+.dialog-box {
+    box-sizing: border-box;
+
+    z-index: 1021;
+
+    position: absolute;
+    min-width: 276px;
+    min-height: 130px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) translateZ(0) scale(0);
+
+    background: rgba(8, 26, 80, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 0px 0.5px 1px rgba(0, 0, 0, 0.4), 0px 4px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    color: #fff;
+    -webkit-user-select: none;
+}
+
+.dialog-box.open {
+    display: block;
+    -webkit-transform: translate(-50%, -50%) translateZ(0) scale(1);
+}
+
+.dialog-box.open-anim {
+    -webkit-animation: dialog-box-open 0.4s 0.1s ease-in-out forwards;
+}
+@-webkit-keyframes dialog-box-open {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate(-50%, -50%) translateZ(0) scale(0.2);
+    }
+    50% {
+        -webkit-transform: translate(-50%, -50%) translateZ(0) scale(1.15);
+    }
+    75% {
+        opacity: 1;
+        -webkit-transform: translate(-50%, -50%) translateZ(0) scale(0.9);
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%) translateZ(0) scale(1);
+    }
+}
+
+.dialog-box.close-anim {
+    -webkit-animation: opacity-out 0.2s ease-out forwards;
+}
+
+.dialog-buttons {
+    display: table;
+    width: 100%;
+    border-spacing: 5px;
+}
+.dialog-buttons .dialog-buttons-row {
+    display: table-row;
+}
+.dialog-buttons .dialog-button-item {
+    display: table-cell;
+}
+
+.dialog-buttons .dialog-button {
+    float: left;
+    box-sizing: border-box;
+    height: 40px;
+
+    background: -webkit-linear-gradient(
+        top,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.16) 50%,
+        rgba(255, 255, 255, 0.04) 50.01%,
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    border: 1px solid #232d4a;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
+    color: #fff;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.8);
+
+    display: block;
+    width: 100%;
+}
+
+.dialog-buttons .dialog-button.primary {
+    background: -webkit-linear-gradient(
+        top,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.36) 50%,
+        rgba(255, 255, 255, 0.24) 50.01%,
+        rgba(255, 255, 255, 0.36) 100%
+    );
+}
+
+.dialog-buttons .dialog-button.active {
+    background: -webkit-linear-gradient(
+        top,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(0, 0, 0, 0.6) 50.01%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+}
