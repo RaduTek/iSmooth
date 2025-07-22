@@ -2,6 +2,8 @@
  * iSmooth Index CSS
  */
 
+/* General Styles ========================================================== */
+
 html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -97,4 +99,79 @@ select {
 .two-column-view.left-large .two-column-right {
     left: 68%;
     right: 0;
+}
+
+/* Loading Overlays ======================================================== */
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+.loading-overlay.dark {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.loading-overlay .loading-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    z-index: 1010;
+    padding: 25px 10px;
+    min-width: 140px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 9px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+.loading-overlay .loading-box .spinner {
+    margin: 0 auto 10px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    background: url("/icons/anim/spinner-40-light.png") no-repeat;
+    -webkit-animation: spinner-spin-frames 1.5s steps(12) infinite;
+}
+@-webkit-keyframes spinner-spin-frames {
+    100% {
+        background-position: -480px 0;
+    }
+}
+
+.largespinner {
+    width: 99px;
+    height: 99px;
+    background: url("/icons/anim/largespinner.png") no-repeat;
+    -webkit-animation: largespinner-spin-frames 1.5s steps(12) infinite;
+}
+@-webkit-keyframes largespinner-spin-frames {
+    100% {
+        background-position: -1188px 0;
+    }
+}
+
+@-webkit-keyframes opacity-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes opacity-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
