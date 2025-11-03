@@ -1,0 +1,45 @@
+.icon-list-chevron {
+    background-image: url(list/chevron.svg);
+}
+
+.icon-list-checked {
+    background-image: url(list/checkmark.png);
+}
+
+.icon-accent {
+    width: 29px;
+    height: 29px;
+    background-image: url(29/accent.png);
+}
+
+.icon-destructive {
+    width: 29px;
+    height: 29px;
+    background-image: url(29/destructive.png);
+}
+
+.icon-success {
+    width: 29px;
+    height: 29px;
+    background-image: url(29/success.png);
+}
+
+.icon-tab-search {
+    -webkit-mask-image: url(tab/search.png);
+}
+
+.icon-tab-book {
+    -webkit-mask-image: url(tab/book.svg);
+}
+
+.icon-tab-clock {
+    -webkit-mask-image: url(tab/clock.svg);
+}
+
+.icon-tab-shoebox {
+    -webkit-mask-image: url(tab/shoebox.svg);
+}
+
+.icon-tab-spotlight {
+    -webkit-mask-image: url(tab/spotlight.svg);
+}

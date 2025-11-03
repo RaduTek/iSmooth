@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+        />
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content="iSmooth" />
+
+        <link rel="stylesheet" href="ismooth.css" />
+        <title>iSmooth</title>
+
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="ismooth.js"></script>
+    </head>
+    <body>
+        <!-- <div class="context" id="root">
+            <nav class="tab-bar">
+                <button class="selected">
+                    <i class="icon-tab-book"></i>
+                    <span class="text-primary">Library</span>
+                </button>
+                <button>
+                    <i class="icon-tab-clock"></i>
+                    <span class="text-primary">Changes</span>
+                </button>
+                <button>
+                    <i class="icon-tab-search"></i>
+                    <span class="text-primary">Search</span>
+                </button>
+            </nav>
+
+            <div class="context-outlet"></div>
+        </div> -->
+
+        <div class="page page-current two-column-view right-large">
+            <nav class="tab-bar">
+                <button class="selected">
+                    <i class="icon-tab-shoebox"></i>
+                    <span class="text-primary">Library</span>
+                </button>
+                <button>
+                    <i class="icon-tab-clock"></i>
+                    <span class="text-primary">Changes</span>
+                </button>
+                <button>
+                    <i class="icon-tab-search"></i>
+                    <span class="text-primary">Search</span>
+                </button>
+            </nav>
+
+            <div class="view two-column-left">
+                <header class="toolbar top">
+                    <div class="toolbar-center">
+                        <div class="button-group">
+                            <button class="selected">Button 1</button>
+                            <button>Button 2</button>
+                            <button>Button 3</button>
+                        </div>
+                    </div>
+                </header>
+                <div class="content bg-secondary">
+                    <div class="list list-secondary">
+                        <button class="list-item">
+                            <i class="icon-primary" style="background-image: url(/icons/29/Calendar.png)"></i>
+                            <span class="text-primary">List Item</span>
+                        </button>
+                        <button class="list-item">
+                            <span class="text-primary">List Item</span>
+                        </button>
+                        <button class="list-item">
+                            <span class="text-primary">List Item</span>
+                        </button>
+                        <button class="list-item">
+                            <span class="text-primary">List Item</span>
+                        </button>
+                        <button class="list-item">
+                            <span class="text-primary">List Item</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view two-column-right">
+                <header class="toolbar top">
+                    <div class="toolbar-label">iSmooth</div>
+                    <button class="left chevron-left">Back</button>
+                    <button class="left" onclick="reloadWindow()">Refresh</button>
+                    <button class="left">.</button>
+                    <button class="right chevron-right" onclick="alert('other click')">Other</button>
+                </header>
+                <div class="content bg-primary">
+                    <div class="list list-primary list-large">
+                        <div class="list-group">
+                            <div class="list-item">
+                                <span class="text-primary">Label</span>
+                            </div>
+                            <button class="list-item chevron" onclick="showModal('#modal1')">
+                                <span class="text-primary">Open Modal</span>
+                            </button>
+                            <button class="list-item" onclick="alert('native alert')">
+                                <i class="icon-accent icon-secondary"></i>
+                                <span class="text-primary" id="test">Open Native Alert</span>
+                            </button>
+                            <button class="list-item" onclick="myDialog()">
+                                <i class="icon-accent icon-secondary"></i>
+                                <span class="text-primary" id="test-dialog">Open Alert Dialog</span>
+                            </button>
+                            <button class="list-item">
+                                <i class="icon-primary" style="background-image: url(/icons/29/Calendar.png)"></i>
+                                <i class="icon-accent icon-secondary"></i>
+                                <span class="text-primary">Label</span>
+                            </button>
+                        </div>
+
+                        <script>
+                            function alertDialog() {
+                                showDialog("This is a simple alert dialog");
+                            }
+
+                            function okCancelDialog() {
+                                showDialog({
+                                    title: "OK/Cancel Dialog",
+                                    content: "This is an OK/Cancel dialog",
+                                    buttons: "okcancel",
+                                    callback: function (result) {
+                                        $("#okCancelResult").text(result);
+                                    }
+                                });
+                            }
+
+                            function yesNoDialog() {
+                                showDialog({
+                                    title: "Yes/No Dialog",
+                                    content: "This is a Yes/No dialog",
+                                    buttons: "yesno",
+                                    callback: function (result) {
+                                        $("#yesNoResult").text(result);
+                                    }
+                                });
+                            }
+
+                            function customButtonsDialog() {
+                                showDialog({
+                                    title: "Custom Buttons Dialog",
+                                    content: "This dialog has custom buttons",
+                                    buttons: [
+                                        {
+                                            key: "custom1",
+                                            text: "Custom 1"
+                                        },
+                                        {
+                                            key: "custom2",
+                                            text: "Custom 2"
+                                        }
+                                    ],
+                                    callback: function (result) {
+                                        $("#customButtonsResult").text(result);
+                                    }
+                                });
+                            }
+
+                            function textInputDialog() {
+                                showDialog({
+                                    title: "Text Input Dialog",
+                                    buttons: "okcancel",
+                                    fields: [
+                                        {
+                                            key: "text",
+                                            placeholder: "Type here..."
+                                        }
+                                    ],
+                                    callback: function (result, fields) {
+                                        $("#textInputResult").text(fields.text);
+                                    }
+                                });
+                            }
+
+                            function loginDialog() {
+                                showDialog({
+                                    title: "Login Dialog",
+                                    buttons: [
+                                        {
+                                            key: "cancel",
+                                            text: "Cancel"
+                                        },
+                                        {
+                                            key: "login",
+                                            text: "Login",
+                                            class: "primary"
+                                        }
+                                    ],
+                                    fields: [
+                                        {
+                                            key: "username",
+                                            placeholder: "Username"
+                                        },
+                                        {
+                                            key: "password",
+                                            placeholder: "Password",
+                                            type: "password"
+                                        }
+                                    ],
+                                    callback: function (result, fields) {
+                                        $("#loginResult").text(fields.username);
+                                    }
+                                });
+                            }
+
+                            function multiDialog() {
+                                showDialog({
+                                    title: "First Dialog Popup",
+                                    content: "Click OK to open another dialog, Cancel to close.",
+                                    buttons: "okcancel",
+                                    callback: function (result) {
+                                        if (result === "ok") {
+                                            return showDialog({
+                                                title: "Second Dialog Popup",
+                                                content: "This is the second dialog."
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        </script>
+
+                        <div class="list-title">Dialog Tests</div>
+                        <div class="list-group">
+                            <button class="list-item chevron" onclick="alertDialog()">
+                                <span class="text-primary">Alert Dialog</span>
+                            </button>
+                            <button class="list-item chevron" onclick="okCancelDialog()">
+                                <span class="text-secondary" id="okCancelResult"></span>
+                                <span class="text-primary">OK/Cancel Dialog</span>
+                            </button>
+                            <button class="list-item chevron" onclick="yesNoDialog()">
+                                <span class="text-secondary" id="yesNoResult"></span>
+                                <span class="text-primary">Yes/No Dialog</span>
+                            </button>
+                            <button class="list-item chevron" onclick="customButtonsDialog()">
+                                <span class="text-secondary" id="customButtonsResult"></span>
+                                <span class="text-primary">Custom Buttons Dialog</span>
+                            </button>
+                            <button class="list-item chevron" onclick="textInputDialog()">
+                                <span class="text-secondary" id="textInputResult"></span>
+                                <span class="text-primary">Text Input Dialog</span>
+                            </button>
+                            <button class="list-item chevron" onclick="loginDialog()">
+                                <span class="text-secondary" id="loginResult"></span>
+                                <span class="text-primary">Login Dialog</span>
+                            </button>
+                            <button class="list-item chevron" onclick="multiDialog()">
+                                <span class="text-primary">Multi Dialog</span>
+                            </button>
+                        </div>
+
+                        <div class="list-title">List Group Title</div>
+                        <div class="list-group">
+                            <button class="list-item">
+                                <span class="text-primary">Label</span>
+                            </button>
+                            <button class="list-item checked">
+                                <span class="text-primary">Label</span>
+                            </button>
+                            <button class="list-item">
+                                <i class="icon-list-chevron"></i>
+                                <span class="text-primary">Label</span>
+                            </button>
+                            <button class="list-item">
+                                <span class="text-primary">Label</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function modalSwitchView() {
+                animateViewSwitch("#modal1_views", "#modal1_view1", "#modal1_view2");
+            }
+        </script>
+
+        <div class="modal-host" id="mh1">
+            <div class="modal-backdrop"></div>
+            <div class="modal modal-w-medium modal-h-large" id="modal1">
+                <div class="view-group" id="modal1_views">
+                    <div class="view current" id="modal1_view1">
+                        <header class="toolbar top">
+                            <button class="right chevron-right" onclick="modalSwitchView()">Next</button>
+                            <div class="toolbar-label">Modal</div>
+                        </header>
+                        <div class="content bg-primary">
+                            <div class="list list-primary list-medium">
+                                <div class="list-title">List Group Title</div>
+                                <div class="list-group">
+                                    <button class="list-item">
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item checked">
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i class="icon-list-chevron"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i class="icon-accent icon-secondary"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i
+                                            class="icon-primary"
+                                            style="background-image: url(/icons/29/Calendar.png)"
+                                        ></i>
+                                        <i class="icon-accent icon-secondary"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                </div>
+                                <div class="list-title">List Group Title</div>
+                                <div class="list-group">
+                                    <button class="list-item">
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item checked">
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i class="icon-list-chevron"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i class="icon-accent icon-secondary"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i
+                                            class="icon-primary"
+                                            style="background-image: url(/icons/29/Calendar.png)"
+                                        ></i>
+                                        <i class="icon-accent icon-secondary"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                </div>
+                                <div class="list-title">List Group Title</div>
+                                <div class="list-group">
+                                    <button class="list-item">
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item checked">
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i class="icon-list-chevron"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i class="icon-accent icon-secondary"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i
+                                            class="icon-primary"
+                                            style="background-image: url(/icons/29/Calendar.png)"
+                                        ></i>
+                                        <i class="icon-accent icon-secondary"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="view" id="modal1_view2">
+                        <header class="toolbar top">
+                            <button class="right" onclick="hideModal('#modal1')">Close</button>
+                            <div class="toolbar-label">Modal</div>
+                        </header>
+                        <div class="content bg-primary">
+                            <div class="list list-primary list-medium">
+                                <div class="list-title">List Group Title</div>
+                                <div class="list-group">
+                                    <button class="list-item">
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item checked">
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i class="icon-list-chevron"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i class="icon-accent icon-secondary"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                    <button class="list-item">
+                                        <i
+                                            class="icon-primary"
+                                            style="background-image: url(/icons/29/Calendar.png)"
+                                        ></i>
+                                        <i class="icon-accent icon-secondary"></i>
+                                        <span class="text-primary">Label</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -2,10 +2,22 @@ var modalOpenDuration = 500;
 var modalHostInstance = null;
 var modalOpenCount = 0;
 
+function initModalHost() {
+    if (modalHostInstance) return;
+
+    var existingHost = $("body > .modal-host").first();
+    if (existingHost.length) {
+        modalHostInstance = existingHost;
+        return;
+    }
+
+    modalHostInstance = $('<div class="modal-host"><div class="modal-backdrop" /></div>');
+    $("body").append(modalHostInstance);
+}
+
 function showModalHost() {
     if (!modalHostInstance) {
-        modalHostInstance = $('<div class="modal-host"><div class="modal-backdrop" /></div>');
-        $("body").append(modalHostInstance);
+        initModalHost();
     }
 
     modalBackdrop = modalHostInstance.children(".modal-backdrop").first();
@@ -27,42 +39,11 @@ function hideModalHost() {
     }, modalOpenDuration);
 }
 
-function getModalSize(modal) {
-    modal = $(modal);
-    return {
-        width: modal.outerWidth(),
-        height: modal.outerHeight()
-    };
-}
-
-function centerModal(modal) {
-    modal = $(modal);
-    var size = getModalSize(modal);
-    var winWidth = $(window).width();
-    var winHeight = $(window).height();
-
-    var left = (winWidth - size.width) / 2;
-    var top = (winHeight - size.height) / 2;
-
-    modal.css({
-        position: "fixed",
-        left: left + "px",
-        top: top + "px"
-    });
-
-    return {
-        left: left,
-        top: top,
-        width: size.width,
-        height: size.height
-    };
-}
-
 function showModal(modal) {
     showModalHost();
     modal = $(modal);
 
-    centerModal(modal);
+    centerElement(modal);
 
     animateClass(modal, false, modalOpenDuration);
 

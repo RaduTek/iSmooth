@@ -27,7 +27,7 @@
     opacity: 1;
 }
 .dialog-backdrop.open-anim {
-    -webkit-animation: opacity-in 0.2s 0.05s ease-out forwards;
+    -webkit-animation: opacity-in 0.6s 0.05s ease-out forwards;
 }
 .dialog-backdrop.close-anim {
     -webkit-animation: opacity-out 0.2s ease-out forwards;
@@ -39,13 +39,15 @@
     z-index: 1021;
 
     position: absolute;
-    min-width: 276px;
-    min-height: 130px;
+    width: 276px;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%) translateZ(0) scale(0);
+    opacity: 0;
 
     background: rgba(8, 26, 80, 0.8);
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjc2IiBoZWlnaHQ9IjI5IiB2aWV3Qm94PSIwIDAgMjc2IDI5IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMCAxOS43NDc3QzM1Ljg5MDkgMjUuNDgwMyA4NC40OTE1IDI5IDEzOCAyOUMxOTEuNTA4IDI5IDI0MC4xMDkgMjUuNDgwMyAyNzYgMTkuNzQ3N1YwSDBWMTkuNzQ3N1oiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl8xXzY2KSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzFfNjYiIHgxPSIxMzgiIHkxPSIwIiB4Mj0iMTM4IiB5Mj0iMjkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMC40Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMC4xIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+Cg==);
+    background-position: top;
+    background-repeat: no-repeat;
     border: 2px solid rgba(255, 255, 255, 0.7);
     box-shadow: 0px 0px 0.5px 1px rgba(0, 0, 0, 0.4), 0px 4px 5px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
@@ -55,26 +57,27 @@
 
 .dialog-box.open {
     display: block;
-    -webkit-transform: translate(-50%, -50%) translateZ(0) scale(1);
+    opacity: 1;
 }
 
 .dialog-box.open-anim {
-    -webkit-animation: dialog-box-open 0.4s 0.1s ease-in-out forwards;
+    -webkit-animation: dialog-box-open 0.4s 0.05s ease-in-out forwards;
 }
 @-webkit-keyframes dialog-box-open {
     0% {
         opacity: 0;
-        -webkit-transform: translate(-50%, -50%) translateZ(0) scale(0.2);
+        -webkit-transform: translateZ(0) scale(0.2);
     }
     50% {
-        -webkit-transform: translate(-50%, -50%) translateZ(0) scale(1.15);
+        -webkit-transform: translateZ(0) scale(1.15);
     }
     75% {
         opacity: 1;
-        -webkit-transform: translate(-50%, -50%) translateZ(0) scale(0.9);
+        -webkit-transform: translateZ(0) scale(0.9);
     }
     100% {
-        -webkit-transform: translate(-50%, -50%) translateZ(0) scale(1);
+        opacity: 1;
+        -webkit-transform: translateZ(0) scale(1);
     }
 }
 
@@ -82,20 +85,41 @@
     -webkit-animation: opacity-out 0.2s ease-out forwards;
 }
 
+.dialog-box .dialog-title {
+    display: block;
+    margin: 16px 10px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.dialog-box .dialog-content {
+    display: block;
+    margin: 10px;
+    font-size: 16px;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
 .dialog-buttons {
     display: table;
     width: 100%;
     border-spacing: 5px;
+    margin-bottom: 1px;
 }
 .dialog-buttons .dialog-buttons-row {
     display: table-row;
 }
-.dialog-buttons .dialog-button-item {
+.dialog-buttons .dialog-buttons-item {
     display: table-cell;
+    width: 50%;
 }
 
 .dialog-buttons .dialog-button {
-    float: left;
     box-sizing: border-box;
     height: 40px;
 
@@ -130,7 +154,7 @@
     );
 }
 
-.dialog-buttons .dialog-button.active {
+.dialog-buttons .dialog-button:active {
     background: -webkit-linear-gradient(
         top,
         rgba(255, 255, 255, 0.3) 0%,
@@ -138,4 +162,31 @@
         rgba(0, 0, 0, 0.6) 50.01%,
         rgba(0, 0, 0, 0.4) 100%
     );
+}
+
+.dialog-fields {
+    border: 1px solid #232d4a;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.4);
+    margin: 5px;
+}
+
+.dialog-fields .dialog-field {
+    display: block;
+    padding: 2px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+.dialog-fields .dialog-field input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    padding: 2px;
+}
+.dialog-fields .dialog-field:last-child {
+    border-bottom: none;
 }

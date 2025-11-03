@@ -14,6 +14,10 @@ body {
     background-color: #000;
 }
 
+.hidden {
+    display: none;
+}
+
 .page {
     position: fixed;
     top: 0;
@@ -36,6 +40,7 @@ select {
 }
 
 .view,
+.view-group,
 .content {
     position: absolute;
     top: 0;
@@ -44,10 +49,41 @@ select {
     right: 0;
     border-radius: 5px;
     -webkit-user-select: none;
+    overflow: hidden;
+}
+
+.view-group .view {
+    display: none;
+    -webkit-transform: translateZ(0);
+}
+.view-group .view.current,
+.view-group.animate .from-view,
+.view-group.animate .to-view {
+    display: block;
+}
+.view-group.animate .from-view {
+    z-index: 1000;
+}
+.view-group.animate .to-view {
+    z-index: 999;
+}
+
+.view-group.animate.from-left .from-view {
+    -webkit-animation: slide-to-right 0.3s 0.1s ease-in-out forwards;
+}
+.view-group.animate.from-left .to-view {
+    -webkit-animation: slide-from-left 0.3s 0.1s ease-in-out forwards;
+}
+
+.view-group.animate.from-right .from-view {
+    -webkit-animation: slide-to-left 0.3s 0.1s ease-in-out forwards;
+}
+.view-group.animate.from-right .to-view {
+    -webkit-animation: slide-from-right 0.3s 0.1s ease-in-out forwards;
 }
 
 .content {
-    overflow: auto;
+    overflow: scroll;
     -webkit-overflow-scrolling: touch;
     background-color: #fff;
     color: #222;
@@ -155,23 +191,5 @@ select {
 @-webkit-keyframes largespinner-spin-frames {
     100% {
         background-position: -1188px 0;
-    }
-}
-
-@-webkit-keyframes opacity-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes opacity-out {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
     }
 }

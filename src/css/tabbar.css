@@ -45,7 +45,7 @@
     text-align: center;
 }
 
-.tab-bar button.active,
+.tab-bar button:active,
 .tab-bar button.selected {
     background: -webkit-linear-gradient(top, #494949, #363636 50%, #252525 51%);
 }
@@ -56,8 +56,8 @@
 .tab-bar button i {
     display: block;
     margin: 0 auto;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 30px;
     border: none;
     -webkit-mask-position: center;
     -webkit-mask-repeat: no-repeat;

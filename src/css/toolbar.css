@@ -97,7 +97,7 @@
     float: right;
 }
 
-.toolbar button.active {
+.toolbar button:active {
     background: -webkit-linear-gradient(top, #989da3, #535a64);
 }
 
